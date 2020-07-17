@@ -1,7 +1,6 @@
 package pages;
 
 import config.ServerConfig;
-import config.SpringConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class MainPage extends AbstractPage{
-    private By companies = By.xpath(".//a[@class='tabs-menu__item tabs-menu__item_link']/h3[contains(text(),\"Компании\")]");
+    private By companies = By.xpath(".//a[@class='tabs-menu__item tabs-menu__item_link']/h3[contains(text(),'Компании')]|.//a[@class='tabs-menu__item tabs-menu__item_link']/h3[contains(text(),'Companies')]");
 
     private Logger logger = LogManager.getLogger(MainPage.class);
     private ServerConfig cfg = ConfigFactory.create(ServerConfig.class);

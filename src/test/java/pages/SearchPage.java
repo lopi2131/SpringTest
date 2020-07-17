@@ -13,9 +13,9 @@ public class SearchPage extends AbstractPage {
     private Logger logger = LogManager.getLogger(HabrWeb.class);
 
     private By firstPost = By.xpath(".//li[@class='content-list__item content-list__item_post shortcuts_item'][1]");
-    private By hubs = By.xpath(".//h3[contains(text(),'Хабы и компании')]");
+    private By hubs = By.xpath(".//h3[contains(text(),'Хабы и компании')]|.//h3[contains(text(),'Hubs and companies')]");
     private By otusBlog = By.xpath(".//em[contains(text(),'OTUS')]");
-    private By usersButn = By.xpath(".//h3[contains(text(),'Пользователи')]");
+    private By usersButn = By.xpath(".//h3[contains(text(),'Пользователи')]|.//h3[contains(text(),'Users')]");
     private By users = By.xpath(".//li[@class='content-list__item  content-list__item_users table-grid js-subscribe_item']");
     private By vvzOtus = By.xpath("//a[contains(@class,'list-snippet__fullname')][contains(text(),'vvz-otus')]");
     private By subs = By.xpath(".//a[contains(text(),'OTUS. Онлайн-образование')]");

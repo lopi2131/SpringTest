@@ -12,14 +12,14 @@ public class CompaniesPage extends AbstractPage {
     private Logger logger = LogManager.getLogger(MainPage.class);
 
     private By findCompany = By.xpath("//input[@id='companies_suggest']");
-    private By otusBlog = By.xpath("//a[@class='list-snippet__title-link']/em[@class='searched-item']");
+    private By otusBlog = By.xpath(".//a[@class='list-snippet__title-link']/em[@class='searched-item']");
     private By location = By.xpath(".//li[@class='defination-list__item defination-list__item_profile-summary']/span[contains(text(),\"Москва\")]");
     private By contentList = By.xpath("//li[@class='content-list__item content-list__item_post shortcuts_item']");
-    private By employees = By.xpath(".//h3[contains(text(),\"Сотрудники\")]");
+    private By employees = By.xpath(".//h3[contains(text(),'Сотрудники')]|.//h3[contains(text(),'Employees')]");
     private By svvyazemsky = By.xpath(".//a[contains(text(),\"Семён Вяземский\")]");
-    private By vacancies = By.xpath(".//h3[contains(text(),\"Вакансии\")]");
-    private By vacanciesNull = By.xpath(".//p[contains(text(),\"нет открытых вакансий\")]");
-    private By siteInform = By.xpath(".//a[contains(text(),\"Устройство сайта\")]");
+    private By vacancies = By.xpath(".//h3[contains(text(),'Вакансии')]|.//h3[contains(text(),'Vacancies')]");
+    private By vacanciesNull = By.xpath(".//p[contains(text(),'нет открытых вакансий')]|.//p[contains(text(),'The company has no open vacancies on')]");
+    private By siteInform = By.xpath(".//a[contains(text(),\"Устройство сайта\")]|.//a[contains(text(),'How it works')]");
 
     public CompaniesPage(WebDriver driver) {
         super(driver);
