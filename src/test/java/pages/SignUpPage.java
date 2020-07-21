@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class SignUpPage extends AbstractPage{
     private Logger logger = LogManager.getLogger(HabrWeb.class);
@@ -41,7 +42,7 @@ public class SignUpPage extends AbstractPage{
 
 
 
-    public SignUpPage(WebDriver driver) {
+    public SignUpPage(RemoteWebDriver driver) {
         super(driver);
     }
 }

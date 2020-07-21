@@ -6,13 +6,16 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class SearchPage extends AbstractPage {
     private Logger logger = LogManager.getLogger(HabrWeb.class);
 
-    private By firstPost = By.xpath(".//li[@class='content-list__item content-list__item_post shortcuts_item'][1]");
+    private By firstPost = By.xpath(".//li[@class='content-list content-list_posts shortcuts_items']");
     private By hubs = By.xpath(".//h3[contains(text(),'Хабы и компании')]|.//h3[contains(text(),'Hubs and companies')]");
     private By otusBlog = By.xpath(".//em[contains(text(),'OTUS')]");
     private By usersButn = By.xpath(".//h3[contains(text(),'Пользователи')]|.//h3[contains(text(),'Users')]");
@@ -25,18 +28,23 @@ public class SearchPage extends AbstractPage {
     private By bookmarks = By.xpath("//h3[contains(text(),'Bookmarks')]");
     private By management = By.xpath("//a[contains(text(),'Management')]");
 
-    public Management moveToManagement(){
+    public ManagementPage moveToManagement(){
+        WebElement element = new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(management));
         driver.findElement(management).click();
         logger.info("Переход во вкладку Management");
 
-        return new Management(driver);
+        return new ManagementPage(driver);
     }
 
 
     public String checkFirstPost() {
+        WebElement element = new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(firstPost));
         logger.info("Проверка заголовка первого поста");
+        List<WebElement> posts =  driver.findElements(firstPost);
 
-        return driver.findElement(firstPost).getText();
+        return posts.get(0).getText();
     }
 
     public String checkInterfaceLang(){
@@ -108,7 +116,7 @@ public class SearchPage extends AbstractPage {
     }
 
 
-    public SearchPage(WebDriver driver) {
+    public SearchPage(RemoteWebDriver driver) {
         super(driver);
     }
 }

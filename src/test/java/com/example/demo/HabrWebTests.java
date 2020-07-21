@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
-import utils.BaseHooks;
+import utils.BaseTest;
 
-public class HabrWebTests extends BaseHooks {
+public class HabrWebTests extends BaseTest {
 
     @Autowired
     public MainPage mainPage;
@@ -22,7 +22,7 @@ public class HabrWebTests extends BaseHooks {
     public SearchPage searchPage;
 
     @Autowired
-    public Management management;
+    public ManagementPage management;
 
     @Autowired
     public SignUpPage signUpPage;
@@ -32,7 +32,6 @@ public class HabrWebTests extends BaseHooks {
 
     @Test
     public void checkSearchResult() {
-
         mainPage.open()
                 .moveToCompanies()
                 .findOtus();
@@ -79,7 +78,7 @@ public class HabrWebTests extends BaseHooks {
                 .moveToEmployees()
                 .moveToVacancies()
                 .moveToSiteInform();
-        Assert.assertTrue(siteInformPage.checkTitle().contains("Информация"), "Проверка заголовка страницы");
+        Assert.assertTrue(siteInformPage.checkTitle().contains("Информация") || siteInformPage.checkTitle().contains("Info"), "Проверка заголовка страницы");
     }
 
     @Test
@@ -92,7 +91,7 @@ public class HabrWebTests extends BaseHooks {
                 .moveToVacancies()
                 .moveToSiteInform()
                 .searchOtusNotes();
-        Assert.assertTrue(searchPage.checkFirstPost().toLowerCase().contains("otus"), "Проверк, что результат поиска содержит текст OTUS");
+        Assert.assertTrue(searchPage.checkFirstPost().toLowerCase().contains("otus"), "Проверка, что результат поиска содержит текст OTUS");
     }
 
     @Test

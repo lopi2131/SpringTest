@@ -1,11 +1,12 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 public abstract class AbstractPage {
 
-    protected WebDriver driver;
+    protected RemoteWebDriver driver;
 
-    public AbstractPage(WebDriver driver) { this.driver = driver; }
+    public AbstractPage(RemoteWebDriver driver) { this.driver = driver; }
 }

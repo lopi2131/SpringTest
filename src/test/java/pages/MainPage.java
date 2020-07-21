@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,7 +19,7 @@ public class MainPage extends AbstractPage{
     private ServerConfig cfg = ConfigFactory.create(ServerConfig.class);
 
 
-    public MainPage(WebDriver driver) {super(driver);}
+    public MainPage(RemoteWebDriver driver) {super(driver);}
 
 
     public MainPage open() {

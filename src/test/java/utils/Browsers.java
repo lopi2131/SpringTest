@@ -5,28 +5,41 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 
 public enum Browsers {
     CHROME {
-        public WebDriver create(){
-            WebDriverManager.chromedriver().setup();
-            return new ChromeDriver();
+        public RemoteWebDriver create() throws MalformedURLException {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
+            capabilities.setVersion("84.0");
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", false);
+            return new RemoteWebDriver(
+                    URI.create("http://0.0.0.0:4444/wd/hub").toURL(),
+                    capabilities
+            );
         }
     },
     IE {
-        public WebDriver create(){
+        public RemoteWebDriver create(){
             return new InternetExplorerDriver();
         }
     },
     FIREFOX {
-        public WebDriver create() {
+        public RemoteWebDriver create() {
             WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver();
         }
     };
 
 
-    public WebDriver create(){
+    public RemoteWebDriver create() throws MalformedURLException {
         return null;
     }
 }

@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,7 +22,7 @@ public class CompaniesPage extends AbstractPage {
     private By vacanciesNull = By.xpath(".//p[contains(text(),'нет открытых вакансий')]|.//p[contains(text(),'The company has no open vacancies on')]");
     private By siteInform = By.xpath(".//a[contains(text(),\"Устройство сайта\")]|.//a[contains(text(),'How it works')]");
 
-    public CompaniesPage(WebDriver driver) {
+    public CompaniesPage(RemoteWebDriver driver) {
         super(driver);
     }
 
